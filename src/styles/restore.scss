@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Helvetica Neue, sans-serif;
+  font-size: 1.25rem !important;
+  height: 100%;
+}
+
+body {
+  background-color: $black;
+  color: $primary;
+  height: 100%;
+}
+
+h1 {
+  font-size: 2.75rem;
+}
+h2 {
+  font-size: 1.75rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 1.25rem;
+}
+h5 {
+  font-size: 1rem;
+}
+h6 {
+  font-size: 0.75rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+a {
+  color: $link;
+  text-decoration: none;
+  &:hover {
+    color: $secondary;
+  }
+}
+
+input,
+button,
+select {
+  border: 0.1rem solid $primary;
+  border-radius: 0;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+}
+
+input,
+select {
+  background-color: $primary;
+
+  &:focus,
+  &:active {
+    outline: 0.1rem solid $primary-dark;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $black;
+  }
+  &::-moz-placeholder {
+    color: $black;
+  }
+  &::-ms-input-placeholder {
+    color: $black;
+  }
+}
+
+select {
+  appearance: button;
+  cursor: pointer;
+}
+select::-ms-expand {
+  display: none;
+}
+
+option {
+  &:checked {
+    background-color: $secondary;
+    color: $white;
+  }
+}
+
+button {
+  background: $black;
+  color: $primary;
+  cursor: pointer;
+
+  &:hover,
+  &:disabled {
+    background: $primary;
+    color: $black;
+  }
+  &:active,
+  &:focus,
+  &:focus {
+    outline: 0.1rem solid $primary-dark;
+  }
+}
+
+hr {
+  border: 0.05rem solid $primary-dark;
+  margin: 0.25rem 0;
+}
