@@ -1,16 +1,16 @@
 <template>
   <div class="calculator">
     <section class="equation row">
-      <AppExpression class="cell" ref="expression" :expression.sync="expression" :operators="operators" :isRoot="true" />
+      <MathExpression class="cell" ref="expression" :expression.sync="expression" :operators="operators" :isRoot="true" />
       <span class="cell">=</span>
-      <AppFraction class="cell" :numerator="result.numerator" :denominator="result.denominator" />
+      <MathFraction class="result cell" :numerator="result.numerator" :denominator="result.denominator" readonly />
     </section>
     <section>
-      <!-- <button @click="calculate()">Calculate</button> -->
       <button @click="addFraction()">Add fraction</button>
       <button @click="addBrackets()">Add brackets</button>
-      <!-- <pre class="code">{{ expression }}</pre> -->
     </section>
+
+    <pre class="code">{{ expression }}</pre>
   </div>
 </template>
 
@@ -19,8 +19,8 @@ import Expression from '@/models/Expression'
 import Fraction from '@/models/Fraction'
 import Operator from '@/models/Operator'
 
-import AppExpression from '@/components/AppExpression'
-import AppFraction from '@/components/AppFraction'
+import MathExpression from '@/components/MathExpression'
+import MathFraction from '@/components/MathFraction'
 
 export default {
   name: 'Calculator',
@@ -105,17 +105,19 @@ export default {
     this.addFraction()
     this.addBrackets()
   },
-  components: { AppExpression, AppFraction }
+  components: { MathExpression, MathFraction }
 }
 </script>
 
 <style lang="scss" scoped>
 .calculator {
-  width: fit-content;
-  margin: 0 auto;
   .equation {
     align-items: center;
     margin-bottom: 0.75rem;
+
+    .result /deep/ input {
+      width: 10rem;
+    }
   }
 }
 </style>

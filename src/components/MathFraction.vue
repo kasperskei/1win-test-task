@@ -1,5 +1,5 @@
 <template>
-  <section class="fraction" :class="{ 'no-valid': !isValid }">
+  <section class="fraction" :class="{ 'invalid': !isValid }">
     <input v-model.number="newNumerator" class="numerator" type="number" :readonly="isReadonly" />
     <hr>
     <input v-model.number="newDenominator" class="denominator" type="number" :readonly="isReadonly" />
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'AppFraction',
+  name: 'MathFraction',
   props: {
     numerator: {
       type: Number,
@@ -35,7 +35,11 @@ export default {
   },
   computed: {
     isValid() {
-      return this.newDenominator !== 0
+      return (
+        this.newNumerator !== '' &&
+        this.newDenominator !== '' &&
+        this.newDenominator !== 0
+      )
     }
   },
   watch: {
@@ -59,25 +63,22 @@ export default {
 @import '../styles/colors';
 
 .fraction {
-  &.no-valid {
+  &.invalid {
     border: 0.1rem solid $danger;
   }
 
   .numerator,
   .denominator {
-    // width: fit-content;
-    margin: 0.25rem;
-    width: 4rem;
-    text-align: center;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  input[type='number'] {
     -moz-appearance: textfield;
+    margin: 0.25rem;
+    text-align: center;
+    width: 4rem;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 }
 </style>

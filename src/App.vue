@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/calculator">Calculator</router-link> |
-      <router-link to="/about">About</router-link>
+    <div class="nav">
+      <router-link :to="{ name: 'calculator' }">Calculator</router-link> |
+      <router-link :to="{ name: 'websocket' }">Websocket</router-link>
     </div>
     <router-view/>
   </div>
@@ -12,7 +12,17 @@
 @import 'styles/main';
 
 #app {
-  max-width: 960px;
   margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+
+  .nav {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
+}
+
+.router-link-active {
+  color: $secondary;
 }
 </style>

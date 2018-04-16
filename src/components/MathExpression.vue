@@ -3,16 +3,14 @@
     <div v-if="!isRoot" class="bracket"></div>
     <div class="content row">
       <div class="cell" v-for="(it, i) in expression" :key="i">
-        <AppExpression :ref="`expression-${i}`" v-if="it.isExpression" :operators="operators" :expression="it.expression" />
-        <AppFraction v-if="it.isFraction" :numerator.sync="it.numerator" :denominator.sync="it.denominator" />
+        <MathExpression :ref="`expression-${i}`" v-if="it.isExpression" :operators="operators" :expression="it.expression" />
+        <MathFraction v-if="it.isFraction" :numerator.sync="it.numerator" :denominator.sync="it.denominator" />
 
         <section v-if="it.isOperator" class="operator">
           <select v-model="expression[i]">
             <option v-for="operator in visibleOperators" :key="operator.name" :value="operator">{{ operator.sign }}</option>
           </select>
         </section>
-
-        <!-- < v-if="it.isOperator" :operators="operators" :operator.sync="it" /> -->
       </div>
     </div>
     <div v-if="!isRoot" class="bracket"></div>
@@ -24,11 +22,11 @@ import Expression from '@/models/Expression'
 import Fraction from '@/models/Fraction'
 import Operator from '@/models/Operator'
 
-import AppExpression from '@/components/AppExpression'
-import AppFraction from '@/components/AppFraction'
+import MathExpression from '@/components/MathExpression'
+import MathFraction from '@/components/MathFraction'
 
 export default {
-  name: 'AppExpression',
+  name: 'MathExpression',
   props: {
     isRoot: {
       type: Boolean,
@@ -92,7 +90,6 @@ export default {
         }
       }
 
-      // TODO: Проверять expression.length
       return expression[0]
     },
     findGCD(a, b) {
@@ -105,7 +102,7 @@ export default {
       return a
     }
   },
-  components: { AppExpression, AppFraction }
+  components: { MathExpression, MathFraction }
 }
 </script>
 
@@ -115,7 +112,6 @@ export default {
 .expression {
   .bracket {
     border: 0.1rem solid $primary-dark;
-    margin: -0.25rem 0.25rem;
     width: 0.25rem;
     &:first-child {
       border-right: none;
