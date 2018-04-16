@@ -9,8 +9,6 @@
       <button @click="addFraction()">Add fraction</button>
       <button @click="addBrackets()">Add brackets</button>
     </section>
-
-    <pre class="code">{{ expression }}</pre>
   </div>
 </template>
 

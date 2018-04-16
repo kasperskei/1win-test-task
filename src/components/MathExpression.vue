@@ -77,8 +77,8 @@ export default {
           if (!expression[i].isOperator || !operator) continue
 
           const fraction = operator.calculate(
-            expression[i - 1], // first fraction
-            expression[i + 1] // second fraction
+            expression[i - 1],
+            expression[i + 1]
           )
           const GCD = this.findGCD(fraction.numerator, fraction.denominator)
 
